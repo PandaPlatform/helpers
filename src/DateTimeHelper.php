@@ -13,6 +13,7 @@ namespace Panda\Support\Helpers;
 
 use DateInterval;
 use DateTime;
+use Exception;
 
 /**
  * Class DateTimeHelper
@@ -84,6 +85,7 @@ class DateTimeHelper
      * @param int[]    $nonWorkingDays array containing the non working days (i.e. [6,7] for Saturday and Sunday)
      *
      * @return int Number of working days
+     * @throws Exception
      */
     public static function getWorkingDaysCount($beginDate, $endDate, $nonWorkingDays = [])
     {
@@ -166,7 +168,7 @@ class DateTimeHelper
         $processedItemsCounter = 0;
 
         foreach ($array as $datetime) {
-            if (!is_object($datetime) || !($datetime instanceof \DateTime)) {
+            if (!is_object($datetime) || !($datetime instanceof DateTime)) {
                 continue;
             }
 

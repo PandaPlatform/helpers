@@ -14,14 +14,20 @@
         }
     ],
     "require": {
-        "php": "^7.0"
+        "php": "^7.0",
+        "ext-mbstring": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~6.3"
     },
     "autoload": {
         "psr-4": {
-            "Panda\\Support\\Helpers\\": ""
+            "Panda\\Support\\Helpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Panda\\Support\\Helpers\\": "tests"
         }
     },
     "extra": {
