@@ -9,16 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Panda\Support\Helpers\Tests;
+namespace Panda\Support\Helpers;
 
-use Panda\Support\Helpers\EvalHelper;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class EvalHelperTest
- * @package Panda\Support\Helpers\Tests
+ * @package Panda\Support\Helpers
  */
-class EvalHelperTest extends PHPUnit_Framework_TestCase
+class EvalHelperTest extends TestCase
 {
     /**
      * @covers \Panda\Support\Helpers\EvalHelper::evaluate

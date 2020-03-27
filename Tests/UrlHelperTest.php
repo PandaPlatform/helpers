@@ -9,20 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace Panda\Support\Helpers\Tests;
+namespace Panda\Support\Helpers;
 
-use Panda\Support\Helpers\UrlHelper;
-use PHPUnit_Framework_TestCase;
+use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class UrlHelperTest
- * @package Panda\Support\Helpers\Tests
+ * @package Panda\Support\Helpers
  */
-class UrlHelperTest extends PHPUnit_Framework_TestCase
+class UrlHelperTest extends TestCase
 {
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::get
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testGet()
     {
@@ -57,7 +58,8 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::getHost
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testGetHost()
     {
@@ -76,7 +78,8 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::getDomain
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testGetDomain()
     {
@@ -95,7 +98,8 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::getSubDomain
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testGetSubDomain()
     {
@@ -114,7 +118,8 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::getProtocol
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testGetProtocol()
     {
@@ -124,7 +129,8 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::getPath
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testGetPath()
     {
@@ -139,7 +145,8 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::info
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      */
     public function testInfo()
     {
@@ -175,7 +182,6 @@ class UrlHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\UrlHelper::isIP
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testIsIP()
     {

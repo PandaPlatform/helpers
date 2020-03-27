@@ -9,20 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Panda\Support\Helpers\Tests;
+namespace Panda\Support\Helpers;
 
-use Panda\Support\Helpers\StringHelper;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class StringHelperTest
- * @package Panda\Support\Helpers\Tests
+ * @package Panda\Support\Helpers
  */
-class StringHelperTest extends PHPUnit_Framework_TestCase
+class StringHelperTest extends TestCase
 {
     /**
      * @covers \Panda\Support\Helpers\StringHelper::startsWith
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testStartsWith()
     {
@@ -37,7 +35,6 @@ class StringHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\StringHelper::endsWith
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testEndsWith()
     {
@@ -69,21 +66,39 @@ class StringHelperTest extends PHPUnit_Framework_TestCase
         $parameters = [
             'first_name' => 'John',
             'last_name' => 'Smith',
+            'parents' => [
+                'dad' => [
+                    'first_name' => 'Bill',
+                    'last_name' => 'Smith',
+                ],
+                'mom' => [
+                    'first_name' => 'Sarah',
+                    'last_name' => 'Smith',
+                ],
+            ],
         ];
 
         $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '%{', '}'));
 
         // Change opening and closing tags (fallback)
         $string = 'Hello {first_name} {last_name}';
-        $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '%{', '}'), true);
+        $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '%{', '}', true));
 
         // Change opening and closing tags
         $string = 'Hello $[first_name] $[last_name]';
-        $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '$[', ']'), false);
+        $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '$[', ']', false));
 
         // Change opening and closing tags (plus fallback)
         $string = 'Hello $[first_name] {last_name}';
-        $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '$[', ']'), true);
+        $this->assertEquals('Hello John Smith', StringHelper::interpolate($string, $parameters, '$[', ']', true));
+
+        // Check for dot syntax
+        $string = 'Hello %{first_name}, son of %{parents.dad.first_name} and %{parents.mom.first_name}';
+        $this->assertEquals('Hello John, son of Bill and Sarah', StringHelper::interpolate($string, $parameters));
+
+        // Check for empty replace values
+        $string = 'Hello %{first_name}, son of %{parents.dad.first_name} and %{parents.mom.first_name}, from %{location}.';
+        $this->assertEquals('Hello John, son of Bill and Sarah, from %{location}.', StringHelper::interpolate($string, $parameters));
     }
 
     /**
@@ -115,7 +130,6 @@ class StringHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\StringHelper::emptyString
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testEmptyString()
     {
@@ -129,7 +143,6 @@ class StringHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\StringHelper::contains
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testContains()
     {

@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Panda\Support\Helpers\Tests;
+namespace Panda\Support\Helpers;
 
 use DateTime;
-use Panda\Support\Helpers\DateTimeHelper;
-use PHPUnit_Framework_TestCase;
+use Exception;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class DateTimeHelperTest
- * @package Panda\Support\Helpers\Tests
+ * @package Panda\Support\Helpers
  */
-class DateTimeHelperTest extends PHPUnit_Framework_TestCase
+class DateTimeHelperTest extends TestCase
 {
     /**
      * @covers \Panda\Support\Helpers\DateTimeHelper::compareDateWithoutTime
@@ -89,12 +89,12 @@ class DateTimeHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\DateTimeHelper::getWorkingDaysCount
+     *
+     * @throws Exception
      */
     public function testGetWorkingDaysCount()
     {
         /**
-         * Notes
-         *
          * 2017-06-05: Monday
          */
         $this->assertEquals(7, DateTimeHelper::getWorkingDaysCount(new DateTime('2017-06-05'), new DateTime('2017-06-11'), []));

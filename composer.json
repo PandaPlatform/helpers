@@ -22,7 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Panda\\Support\\Helpers\\": ""
+            "Panda\\Support\\Helpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Panda\\Support\\Helpers\\": "tests"
         }
     },
     "extra": {

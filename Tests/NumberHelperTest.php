@@ -9,16 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Panda\Support\Helpers\Tests;
+namespace Panda\Support\Helpers;
 
-use Panda\Support\Helpers\NumberHelper;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class NumberHelperTest
- * @package Panda\Support\Helpers\Tests
+ * @package Panda\Support\Helpers
  */
-class NumberHelperTest extends PHPUnit_Framework_TestCase
+class NumberHelperTest extends TestCase
 {
     /**
      * @covers \Panda\Support\Helpers\NumberHelper::floor
@@ -42,7 +41,6 @@ class NumberHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\NumberHelper::average
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testAverage()
     {
@@ -57,7 +55,6 @@ class NumberHelperTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \Panda\Support\Helpers\NumberHelper::isEqual
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testIsEqual()
     {
