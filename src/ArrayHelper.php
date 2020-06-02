@@ -305,6 +305,30 @@ class ArrayHelper
     }
 
     /**
+     * Return the array in a key-value form using groups, based on the
+     * given parameters for key and value.
+     *
+     * @param array|object[] $collection
+     * @param string         $key
+     * @param string         $value
+     * @param bool           $useDotSyntax
+     *
+     * @return array
+     */
+    public static function toKeyValueGroup($collection, $key, $value, $useDotSyntax = false)
+    {
+        $keyValueGroupArray = [];
+        foreach ($collection as $item) {
+            $itemArray = is_array($item) ? $item : (method_exists($item, 'toArray') ? $item->toArray() : []);
+            $keyValue = self::get($itemArray, $key, null, $useDotSyntax);
+            $valueValue = self::get($itemArray, $value, null, $useDotSyntax);
+            $keyValueGroupArray[$keyValue][] = $valueValue;
+        }
+
+        return $keyValueGroupArray;
+    }
+
+    /**
      * Sort an array by a given value, based on the given key.
      *
      * @param array  $array

@@ -282,7 +282,7 @@ class ArrayHelperTest extends TestCase
     }
 
     /**
-     * @covers \Panda\Support\Helpers\ArrayHelper::toKeyIndex
+     * @covers \Panda\Support\Helpers\ArrayHelper::toKeyValue
      */
     public function testToKeyValue()
     {
@@ -309,6 +309,33 @@ class ArrayHelperTest extends TestCase
             1 => 2,
             11 => 22,
             111 => 222,
+        ], $result);
+    }
+
+    /**
+     * @covers \Panda\Support\Helpers\ArrayHelper::toKeyValueGroup
+     */
+    public function testToKeyValueGroup()
+    {
+        $array = [
+            [
+                't1' => 'v1',
+                't2' => 1,
+            ],
+            [
+                't1' => 'v1',
+                't2' => 2,
+            ],
+            [
+                't1' => 'v3',
+                't2' => 3,
+            ],
+        ];
+
+        $result = ArrayHelper::toKeyValueGroup($array, 't1', 't2');
+        $this->assertEquals([
+            'v1' => [1, 2],
+            'v3' => [3],
         ], $result);
     }
 }
