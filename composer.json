@@ -14,13 +14,11 @@
         }
     ],
     "require": {
-        "php": "^7.0",
+        "php": "^8.3",
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "ext-pcov": "^1.0",
-        "phpunit/phpunit": "~6.3",
-        "pcov/clobber": "^2.0"
+        "phpunit/phpunit": "~11.3"
     },
     "autoload": {
         "psr-4": {

@@ -16,6 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class ArrayHelperTest
+ *
  * @package Panda\Support\Helpers
  */
 class ArrayHelperTest extends TestCase
@@ -163,7 +164,7 @@ class ArrayHelperTest extends TestCase
         $this->assertEquals('default_value', $result);
 
         // Filter function with some matches
-        $result = ArrayHelper::filter($array, [self::class, 'filterCallback1'], 'default_value');
+        $result = ArrayHelper::filter($array, [$this, 'filterCallback1'], 'default_value');
         $this->assertEquals([
             't11' => 'v11',
             't12' => 'v12',
@@ -186,7 +187,7 @@ class ArrayHelperTest extends TestCase
      */
     public function filterCallback1($key)
     {
-        if (substr($key, 0, 2) == 't1') {
+        if (str_starts_with($key, 't1')) {
             return true;
         }
 
